@@ -42,7 +42,7 @@ public final class IcePracticeAPI {
      * the version of bukkit is supported by IcePractice.
      * @return An NMS API instance which you can use.
      */
-    public static NmsApi gNmsApi() {
+    public static NmsApi getNmsApi() {
         return practice.getNmsApi();
     }
 

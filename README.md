@@ -73,7 +73,7 @@ public class PingCommand() {
     //Your code here
     //....
     private void showPing(Player player) {
-        NmsApi nmsApi = IcePracticeAPI.gNmsApi(); //Get IcePractice's NMS Adapter for the appropriate version
+        NmsApi nmsApi = IcePracticeAPI.getNmsApi(); //Get IcePractice's NMS Adapter for the appropriate version
         int ping = nmsApi.getPing(player); //Get the player's ping through the adapter
         player.sendMessage("Your ping :" + ping + " ms");
     }
