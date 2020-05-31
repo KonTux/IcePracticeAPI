@@ -10,10 +10,16 @@ public interface IcePracticeFight {
 
     void runMatch();
 
+    void killPlayer(Player dead, Player killer);
+
+    void endFight(Player lastDead);
+
     /**
      * Called when cooldown expired and the actual match starts
      */
     void expireCooldown();
+
+    void addSpectator(Player player, boolean announce);
 
     /**
      * Removes a spectator from a match.
