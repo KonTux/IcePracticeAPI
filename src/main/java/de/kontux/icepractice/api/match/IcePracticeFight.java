@@ -2,6 +2,7 @@ package de.kontux.icepractice.api.match;
 
 import de.kontux.icepractice.api.arena.IcePracticeArena;
 import de.kontux.icepractice.api.kit.IcePracticeKit;
+import de.kontux.icepractice.api.match.misc.FightStatistics;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -87,4 +88,6 @@ public interface IcePracticeFight {
      * @return if the match is ranked
      */
     boolean isRanked();
+
+    FightStatistics getMatchStatistics();
 }
