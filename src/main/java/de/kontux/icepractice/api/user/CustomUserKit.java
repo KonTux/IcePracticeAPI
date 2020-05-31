@@ -1,6 +1,6 @@
 package de.kontux.icepractice.api.user;
 
-import de.kontux.icepractice.api.IcePractice;
+import de.kontux.icepractice.api.kit.IcePracticeKit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,7 +16,7 @@ public interface CustomUserKit {
 
     int getNumber();
 
-    IcePractice getKit();
+    IcePracticeKit getKit();
 
     void setCustomName();
 }
