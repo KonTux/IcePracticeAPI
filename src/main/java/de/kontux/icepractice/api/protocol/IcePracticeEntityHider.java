@@ -6,15 +6,6 @@ import org.bukkit.entity.Player;
 public interface IcePracticeEntityHider {
 
     /**
-     * Set the visibility status of a given entity for a particular observer.
-     *
-     * @param observer - the observer player.
-     * @param visible  - TRUE if the entity should be made visible, FALSE if not.
-     * @return TRUE if the entity was visible before this method call, FALSE otherwise.
-     */
-    boolean setVisibility(Player observer, int entityID, boolean visible);
-
-    /**
      * Determine if a given entity is visible for a particular observer.
      *
      * @param observer - the observer player.
