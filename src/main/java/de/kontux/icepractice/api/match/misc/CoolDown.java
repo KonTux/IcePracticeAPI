@@ -40,7 +40,7 @@ public class CoolDown {
                 player.playNote(player.getLocation(), Instrument.STICKS, Note.sharp(0, Note.Tone.C));
             }
 
-            for (Player player : fight.getPlayers()) {
+            for (Player player : fight.getSpectators()) {
                 player.sendMessage(IcePracticeAPI.getMatchMessages().getCooldownMessage(countdown));
                 player.playNote(player.getLocation(), Instrument.STICKS, Note.sharp(0, Note.Tone.C));
             }
