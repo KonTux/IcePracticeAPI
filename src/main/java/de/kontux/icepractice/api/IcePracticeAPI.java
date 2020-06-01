@@ -1,16 +1,23 @@
 package de.kontux.icepractice.api;
 
+import de.kontux.icepractice.api.arena.ArenaHandler;
 import de.kontux.icepractice.api.arena.IcePracticeArena;
 import de.kontux.icepractice.api.config.MatchMessages;
+import de.kontux.icepractice.api.config.PluginSettings;
+import de.kontux.icepractice.api.gui.InventoryGui;
 import de.kontux.icepractice.api.kit.IcePracticeKit;
+import de.kontux.icepractice.api.kit.KitHandler;
 import de.kontux.icepractice.api.locations.IcePracticeSpawnpoint;
 import de.kontux.icepractice.api.match.IcePracticeFight;
 import de.kontux.icepractice.api.match.IcePracticeFightRegistry;
+import de.kontux.icepractice.api.match.misc.FightStatistics;
 import de.kontux.icepractice.api.match.misc.MatchInventory;
 import de.kontux.icepractice.api.nms.NmsApi;
 import de.kontux.icepractice.api.playerstates.PlayerStateManager;
+import de.kontux.icepractice.api.protocol.IcePracticeEntityHider;
 import de.kontux.icepractice.api.user.UserData;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -34,7 +41,7 @@ public final class IcePracticeAPI {
      * @return The kit, null if not found
      */
     public static IcePracticeKit getKit(String name) {
-        return practice.getKit(name);
+        return getKitHandler().getKit(name);
     }
 
     /**
@@ -43,7 +50,7 @@ public final class IcePracticeAPI {
      * @return The arena, null if not found
      */
     public static IcePracticeArena getArena(String name) {
-        return practice.getArena(name);
+        return getArenaHandler().getArena(name);
     }
 
     /**
@@ -55,6 +62,18 @@ public final class IcePracticeAPI {
         return practice.getNmsApi();
     }
 
+    public static IcePracticeFight getFightByPlayer(Player player) {
+        return practice.getFightByPlayer(player);
+    }
+
+    public static void openInventoryMenu(Player player, InventoryGui inventory) {
+        practice.registerInventoryMenu(player, inventory);
+    }
+
+    public static PluginSettings getPluginSettings() {
+        return practice.getPluginSettings();
+    }
+
     public static IcePracticeSpawnpoint getSpawnpointManager() {
         return practice.getSpawnpointManager();
     }
@@ -63,12 +82,24 @@ public final class IcePracticeAPI {
         return practice.getMatchMessages();
     }
 
+    public static KitHandler getKitHandler() {
+        return practice.getKitHandler();
+    }
+
+    public static ArenaHandler getArenaHandler() {
+        return practice.getArenaHandler();
+    }
+
     public static PlayerStateManager getPlayerStateManager() {
         return practice.getPlayerStateManager();
     }
 
     public static MatchInventory generateMatchInventory(Player player, IcePracticeFight fight) {
         return practice.generateMatchInventory(player, fight);
+    }
+
+    public static FightStatistics constructFightStatistics(IcePracticeFight fight) {
+        return practice.constructFightStatistics(fight);
     }
 
     public static UserData getUserData(Player player) {
@@ -86,5 +117,17 @@ public final class IcePracticeAPI {
 
     public static IcePracticeFightRegistry getFightRegistry() {
         return practice.getFightRegistry();
+    }
+
+    public static IcePracticeEntityHider getEntityHider() {
+        return practice.getEntityHider();
+    }
+
+    public static ChatColor getPrimary() {
+        return getPluginSettings().getPrimaryColour();
+    }
+
+    public static ChatColor getSecondary() {
+        return getPluginSettings().getSecondaryColour();
     }
 }

@@ -71,6 +71,8 @@ public interface IcePracticeFight {
      */
     List<Player> getPlayers();
 
+    List<Player> getSpectators();
+
     /**
      * Returns the kit that is used in this fight.
      * @return the kit.

@@ -4,8 +4,10 @@ import de.kontux.icepractice.api.IcePracticeAPI;
 import de.kontux.icepractice.api.arena.IcePracticeArena;
 import de.kontux.icepractice.api.config.MatchMessages;
 import de.kontux.icepractice.api.kit.IcePracticeKit;
-import de.kontux.icepractice.api.user.CustomUserKit;
+import de.kontux.icepractice.api.match.misc.CoolDown;
+import de.kontux.icepractice.api.match.misc.FightStatistics;
 import de.kontux.icepractice.api.playerstates.PlayerState;
+import de.kontux.icepractice.api.user.CustomUserKit;
 import de.kontux.icepractice.api.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,11 +27,12 @@ public abstract class CustomFight implements IcePracticeFight {
     protected final List<Player> players;
     protected final IcePracticeKit kit;
     protected IcePracticeArena arena;
+    private final FightStatistics statistics = IcePracticeAPI.constructFightStatistics(this);
 
     protected final boolean ranked;
-    private final Plugin plugin;
+    protected final Plugin plugin;
     private final List<Player> all;
-    private final List<Player> spectators = new ArrayList<>();
+    protected final List<Player> spectators = new ArrayList<>();
 
     public CustomFight(Plugin plugin, List<Player> players, IcePracticeKit kit, boolean ranked) {
         this.plugin = plugin;
@@ -37,6 +40,10 @@ public abstract class CustomFight implements IcePracticeFight {
         this.all = Collections.unmodifiableList(players);
         this.kit = kit;
         this.ranked = ranked;
+    }
+
+    protected final void startCooldown() {
+        new CoolDown(plugin, this).runCooldown();
     }
 
     protected void spawnPlayer(Player player, Location location) {
@@ -141,6 +148,21 @@ public abstract class CustomFight implements IcePracticeFight {
     }
 
     @Override
+    public void expireCooldown() {
+        for (Player player : players) {
+            IcePracticeAPI.getPlayerStateManager().setState(player, PlayerState.MATCH);
+        }
+
+        IcePracticeAPI.broadcast(players, MESSAGES.getStartMessage());
+        IcePracticeAPI.broadcast(spectators, MESSAGES.getStartMessage());
+    }
+
+    @Override
+    public final FightStatistics getMatchStatistics() {
+        return statistics;
+    }
+
+    @Override
     public final boolean isRanked() {
         return ranked;
     }
@@ -148,6 +170,11 @@ public abstract class CustomFight implements IcePracticeFight {
     @Override
     public final List<Player> getPlayers() {
         return players;
+    }
+
+    @Override
+    public final List<Player> getSpectators() {
+        return null;
     }
 
     @Override
