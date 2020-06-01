@@ -19,6 +19,7 @@ import de.kontux.icepractice.api.user.UserData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
@@ -26,13 +27,19 @@ public final class IcePracticeAPI {
 
     private static IcePractice practice;
 
-    public static void setIcePractice(IcePractice icePractice) {
+    public static void setIcePractice(Plugin plugin, IcePractice icePractice) {
         if (practice != null) {
             throw new IllegalStateException("Practice instance for IcePracticeAPI has already been set.");
         }
 
-        practice = icePractice;
-        Bukkit.getLogger().info("IcePracticeAPI is on version " + icePractice.getVersion());
+        System.out.println("Initializing IcePractice API...");
+
+        if (plugin.getName().equals("IcePractice")) {
+            practice = icePractice;
+            System.out.println("IcePracticeAPI is on version " + icePractice.getVersion());
+        } else {
+            System.out.println(plugin.getName() + " attempted to set the IcePractice instance. Only IcePractice itself may do that!");
+        }
     }
 
     /**
