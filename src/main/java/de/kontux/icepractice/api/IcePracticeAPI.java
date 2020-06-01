@@ -37,6 +37,7 @@ public final class IcePracticeAPI {
         if (plugin.getName().equals("IcePractice")) {
             practice = icePractice;
             System.out.println("IcePracticeAPI is on version " + icePractice.getVersion());
+            System.out.println("IcePracticeAPI has been initialized successfully!");
         } else {
             System.out.println(plugin.getName() + " attempted to set the IcePractice instance. Only IcePractice itself may do that!");
         }

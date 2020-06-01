@@ -49,6 +49,7 @@ public abstract class CustomFight implements IcePracticeFight {
     protected void spawnPlayer(Player player, Location location) {
         player.teleport(location);
         IcePracticeAPI.getPlayerStateManager().setState(player, PlayerState.STARTING_MATCH);
+        handleEntityHider(player);
     }
 
     protected final void equipKit(Player player) {
@@ -155,6 +156,21 @@ public abstract class CustomFight implements IcePracticeFight {
 
         IcePracticeAPI.broadcast(players, MESSAGES.getStartMessage());
         IcePracticeAPI.broadcast(spectators, MESSAGES.getStartMessage());
+    }
+
+    protected final void handleEntityHider(Player player) {
+        for (Player current : player.getWorld().getPlayers()) {
+            if (players.contains(current)) {
+                IcePracticeAPI.getEntityHider().showEntity(current, player);
+                IcePracticeAPI.getEntityHider().showEntity(player, current);
+            } else if (spectators.contains(current)){
+                IcePracticeAPI.getEntityHider().showEntity(player, current);
+                IcePracticeAPI.getEntityHider().hideEntity(player, current);
+            } else {
+                IcePracticeAPI.getEntityHider().hideEntity(player, current);
+                IcePracticeAPI.getEntityHider().hideEntity(current, player);
+            }
+        }
     }
 
     @Override
