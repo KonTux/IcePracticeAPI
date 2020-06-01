@@ -29,7 +29,7 @@ depend:
   - IcePractice
 ```
 
-This will tell the Bukkit server that your plugin depends on IcePractice and that it need to be loaded before your plugin.
+This will tell the Bukkit server that your plugin depends on IcePractice and that it needs to be loaded before your plugin.
 
 Now you are ready to use the API! You will probably mostly use the ```IcePracticeAPI.java``` class. It contains several static methods
 that let you do key things like retrieving a kit from the plugin. It is similar to the ```Bukkit.java``` class.
