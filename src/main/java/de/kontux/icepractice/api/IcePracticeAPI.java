@@ -69,6 +69,11 @@ public final class IcePracticeAPI {
         return practice.getNmsApi();
     }
 
+    /**
+     * Gets the fight the player is currently in.
+     * @param player THe player
+     * @return The found fight, null if not in a fight
+     */
     public static IcePracticeFight getFightByPlayer(Player player) {
         return practice.getFightByPlayer(player);
     }
