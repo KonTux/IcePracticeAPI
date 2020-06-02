@@ -19,6 +19,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class CustomFight implements IcePracticeFight {
 
@@ -35,10 +36,10 @@ public abstract class CustomFight implements IcePracticeFight {
     protected final List<Player> spectators = new ArrayList<>();
 
     public CustomFight(Plugin plugin, List<Player> players, IcePracticeKit kit, boolean ranked) {
-        this.plugin = plugin;
-        this.players = players;
+        this.plugin = Objects.requireNonNull(plugin);
+        this.players = Objects.requireNonNull(players);
         this.all = Collections.unmodifiableList(players);
-        this.kit = kit;
+        this.kit = Objects.requireNonNull(kit);
         this.ranked = ranked;
     }
 
@@ -59,14 +60,14 @@ public abstract class CustomFight implements IcePracticeFight {
             customKits = IcePracticeAPI.getUserData(player).getCustomKits(kit);
         }
 
-        if (customKits != null && !customKits.isEmpty()) {
+        if (customKits == null || customKits.isEmpty()) {
+            kit.equipKit(player);
+        } else {
             for (CustomUserKit customKit : customKits) {
                 player.getInventory().addItem(ItemBuilder.create(Material.BOOK, customKit.getCustomName(), null));
             }
 
             player.sendMessage(ChatColor.YELLOW + "Please select a custom kit.");
-        } else {
-            kit.equipKit(player);
         }
     }
 
@@ -190,7 +191,7 @@ public abstract class CustomFight implements IcePracticeFight {
 
     @Override
     public final List<Player> getSpectators() {
-        return null;
+        return spectators;
     }
 
     @Override
