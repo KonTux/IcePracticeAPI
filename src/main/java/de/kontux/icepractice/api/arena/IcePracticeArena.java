@@ -38,4 +38,8 @@ public interface IcePracticeArena {
     boolean isSpleef();
 
     boolean isHcf();
+
+    boolean isBuild();
+
+    void setBuild();
 }
