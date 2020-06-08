@@ -41,5 +41,9 @@ public interface IcePracticeArena {
 
     boolean isBuild();
 
-    void setBuild();
+    void setBuild(boolean build);
+
+    boolean isInUse();
+
+    void setInUse(boolean inUse);
 }
