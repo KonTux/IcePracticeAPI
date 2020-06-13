@@ -54,4 +54,6 @@ public interface IcePractice {
     KitHandler getKitHandler();
 
     PluginSettings getPluginSettings();
+
+    void log(String message);
 }

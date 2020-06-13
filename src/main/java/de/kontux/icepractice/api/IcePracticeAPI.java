@@ -32,13 +32,13 @@ public final class IcePracticeAPI {
             throw new IllegalStateException("Practice instance for IcePracticeAPI has already been set.");
         }
 
-        System.out.println("Initializing IcePractice API...");
+        log(ChatColor.YELLOW + "Initializing IcePractice API...");
 
         if (plugin.getName().equals("IcePractice")) {
             practice = icePractice;
-            System.out.println("IcePracticeAPI is on version " + icePractice.getVersion());
+            log(ChatColor.GREEN + "IcePracticeAPI is on version " + icePractice.getVersion());
         } else {
-            System.out.println(plugin.getName() + " attempted to set the IcePractice instance. Only IcePractice itself may do that!");
+            log(plugin.getName() + " attempted to set the IcePractice instance. Only IcePractice itself may do that!");
         }
     }
 
@@ -76,6 +76,10 @@ public final class IcePracticeAPI {
      */
     public static IcePracticeFight getFightByPlayer(Player player) {
         return practice.getFightByPlayer(player);
+    }
+
+    public static void log(String message) {
+        practice.log(message);
     }
 
     public static void openInventoryMenu(Player player, InventoryGui inventory) {
