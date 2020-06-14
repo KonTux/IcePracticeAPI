@@ -32,7 +32,7 @@ public final class IcePracticeAPI {
             throw new IllegalStateException("Practice instance for IcePracticeAPI has already been set.");
         }
 
-        log(ChatColor.YELLOW + "Initializing IcePractice API...");
+        plugin.getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[IcePractice]" + ChatColor.YELLOW + "Initializing IcePractice API...");
 
         if (plugin.getName().equals("IcePractice")) {
             practice = icePractice;
