@@ -56,4 +56,8 @@ public interface IcePracticeKit {
     boolean isEditable();
 
     void setEditable(boolean editable);
+
+    boolean allowRegen();
+
+    void setAllowRegen(boolean allowRegen);
 }
