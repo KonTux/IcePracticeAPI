@@ -60,4 +60,8 @@ public interface IcePracticeKit {
     boolean allowRegen();
 
     void setAllowRegen(boolean allowRegen);
+
+    boolean allowChestEditing();
+
+    void setAllowChestEditing(boolean allowChestEditing);
 }
