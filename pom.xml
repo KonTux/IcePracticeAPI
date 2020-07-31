@@ -6,7 +6,7 @@
 
     <groupId>de.kontux</groupId>
     <artifactId>IcePracticeAPI</artifactId>
-    <version>0.5.1</version>
+    <version>0.6.1</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
