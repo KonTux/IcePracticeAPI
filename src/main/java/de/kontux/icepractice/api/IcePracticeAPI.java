@@ -23,6 +23,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
+@Deprecated
 public final class IcePracticeAPI {
 
     private static IcePractice practice;
