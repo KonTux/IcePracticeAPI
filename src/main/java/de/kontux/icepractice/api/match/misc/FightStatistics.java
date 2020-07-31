@@ -15,6 +15,8 @@ public interface FightStatistics {
 
     void addBrokenBlock(Block block);
 
+    void addPlacedBlock(Block block);
+
     int getHitCount(UUID player);
 
     int getThrownPots(UUID player);
