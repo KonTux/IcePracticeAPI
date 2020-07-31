@@ -30,7 +30,7 @@ Maven dependency:
 <dependency>
     <groupId>com.github.KonTux</groupId>
     <artifactId>IcePracticeAPI</artifactId>
-    <version>0.5.1</version>
+    <version>VERSION</version>
 </dependency>
 ```
 
