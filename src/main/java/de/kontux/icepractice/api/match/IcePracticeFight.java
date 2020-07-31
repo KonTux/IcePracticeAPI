@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public interface IcePracticeFight {
+public interface IcePracticeFight extends Spectatable {
 
     void runMatch();
 
@@ -19,15 +19,6 @@ public interface IcePracticeFight {
      * Called when cooldown expired and the actual match starts
      */
     void expireCooldown();
-
-    void addSpectator(Player player, boolean announce);
-
-    /**
-     * Removes a spectator from a match.
-     * @param player The player to leave spectator mode
-     * @param announce If all other players in the match should see the leave message
-     */
-    void removeSpectator(Player player, boolean announce);
 
     /**
      * Determines the winner team based on the last person who died

@@ -1,5 +1,6 @@
-package de.kontux.icepractice.api.event;
+package de.kontux.icepractice.api.event.fight;
 
+import de.kontux.icepractice.api.event.IcePracticeEvent;
 import de.kontux.icepractice.api.match.IcePracticeFight;
 import org.bukkit.event.HandlerList;
 
@@ -12,6 +13,10 @@ public class FightStartEvent extends IcePracticeEvent {
     public FightStartEvent(IcePracticeFight fight) {
         super("FightStartEvent");
         this.fight = fight;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS;
     }
 
     @Override

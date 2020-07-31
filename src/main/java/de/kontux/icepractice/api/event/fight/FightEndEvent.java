@@ -1,5 +1,6 @@
-package de.kontux.icepractice.api.event;
+package de.kontux.icepractice.api.event.fight;
 
+import de.kontux.icepractice.api.event.IcePracticeEvent;
 import de.kontux.icepractice.api.match.IcePracticeFight;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -63,5 +64,9 @@ public class FightEndEvent extends IcePracticeEvent {
 
     public int getLoserElo() {
         return loserElo;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS;
     }
 }
