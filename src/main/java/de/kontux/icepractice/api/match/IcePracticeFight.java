@@ -62,8 +62,6 @@ public interface IcePracticeFight extends Spectatable {
      */
     List<Player> getPlayers();
 
-    List<Player> getSpectators();
-
     /**
      * Returns the kit that is used in this fight.
      * @return the kit.

@@ -190,11 +190,6 @@ public abstract class CustomFight implements IcePracticeFight {
     }
 
     @Override
-    public final List<Player> getSpectators() {
-        return spectators;
-    }
-
-    @Override
     public final IcePracticeKit getKit() {
         return kit;
     }
